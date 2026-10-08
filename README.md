@@ -1,5 +1,7 @@
 # Better Stack Ops
 
+<p><img src="assets/provider-logo.svg" alt="Better Stack provider logo" width="200"></p>
+
 **Move from monitor state to the logs that explain it.**
 
 ![Better Stack Ops workflow](assets/workflow.svg)
@@ -76,5 +78,6 @@ resource names, logs and account metadata may still be private: review output be
 
 Extracted and maintained from the author's existing local skill implementation, with
 account-specific defaults and private operational notes removed. Documentation, fixtures and
-SVG artwork in this distribution are original. External runtimes and provider services retain
+workflow SVG artwork in this distribution are original. Provider marks are attributed in
+[brand sources](assets/BRAND-SOURCES.md) and excluded from the MIT license. External runtimes and provider services retain
 their own licenses and terms; this repository does not redistribute them.
