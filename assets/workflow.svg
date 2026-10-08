@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500" role="img" aria-labelledby="bs-title bs-desc">
+<title id="bs-title">Better Stack Ops</title>
+<desc id="bs-desc">Illustration on one shared time axis: a monitor response-time pulse chart, an incident bar with start, acknowledge and resolve markers, and log rows placed at their timestamps. A selected time window highlights the matching incident and the log rows that explain it. Move from monitor state to the logs that explain it.</desc>
+<style>
+.bs-s{font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif}
+.bs-m{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace}
+.bs-cur{animation:bs-cur 6s ease-in-out infinite}
+@keyframes bs-cur{0%{transform:translateX(0);opacity:1}70%{transform:translateX(180px);opacity:1}82%{transform:translateX(180px);opacity:0}99%{transform:translateX(0);opacity:0}100%{transform:translateX(0);opacity:1}}
+.bs-h2{animation:bs-h2 6s ease-in-out infinite}
+.bs-h3{animation:bs-h3 6s ease-in-out infinite}
+.bs-h4{animation:bs-h4 6s ease-in-out infinite}
+@keyframes bs-h2{0%,10%{opacity:.12}14%,85%{opacity:1}95%,100%{opacity:.12}}
+@keyframes bs-h3{0%,21%{opacity:.12}25%,85%{opacity:1}95%,100%{opacity:.12}}
+@keyframes bs-h4{0%,50%{opacity:.12}54%,85%{opacity:1}95%,100%{opacity:.12}}
+.bs-pulse{opacity:0;stroke-dasharray:6 94;animation:bs-pulse 5s linear infinite}
+@keyframes bs-pulse{from{stroke-dashoffset:0;opacity:.85}to{stroke-dashoffset:-100;opacity:.85}}
+.bs-ring{opacity:0;transform-box:fill-box;transform-origin:50% 50%;animation:bs-ring 3s ease-out infinite}
+@keyframes bs-ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs>
+<linearGradient id="bs-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00C2B0" stop-opacity=".4"/><stop offset="1" stop-color="#00C2B0" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1000" height="500" fill="#EEF0FF"/>
+
+<!-- header -->
+<text class="bs-s" x="36" y="68" font-size="48" font-weight="800" fill="#12184A" letter-spacing="-1">Better Stack <tspan fill="#D0127F">Ops</tspan></text>
+<path d="M36 86 H120 L132 74 L146 98 L158 80 L168 86 H330" fill="none" stroke="#1747FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text class="bs-s" x="36" y="116" font-size="18" font-weight="600" fill="#12184A">Move from monitor state to the logs that explain it.</text>
+<rect x="664" y="36" width="300" height="30" rx="15" fill="#12184A"/>
+<text class="bs-s" x="814" y="56" font-size="13" font-weight="800" fill="#FF8A1F" text-anchor="middle" letter-spacing=".4">ILLUSTRATIVE / SYNTHETIC DATA</text>
+
+<!-- container -->
+<rect x="36" y="134" width="928" height="344" rx="22" fill="#fff" stroke="#12184A" stroke-width="3"/>
+<rect x="37.5" y="260" width="925" height="42" fill="#DCE6FF"/>
+<rect x="37.5" y="302" width="925" height="26" fill="#EAE4FF"/>
+<!-- grid -->
+<g stroke="#12184A" stroke-opacity=".12" stroke-width="2">
+<line x1="190" y1="138" x2="190" y2="474"/><line x1="340" y1="138" x2="340" y2="474"/><line x1="490" y1="138" x2="490" y2="474"/><line x1="640" y1="138" x2="640" y2="474"/><line x1="790" y1="138" x2="790" y2="474"/><line x1="940" y1="138" x2="940" y2="474"/>
+</g>
+<!-- rail -->
+<g class="bs-s" fill="#12184A">
+<text x="52" y="196" font-size="15" font-weight="800">Monitor</text><text x="52" y="216" font-size="13" font-weight="700" fill="#4A5190">response time</text>
+<text x="52" y="285" font-size="15" font-weight="800">Incident</text>
+<text x="52" y="356" font-size="15" font-weight="800">Logs</text><text x="52" y="376" font-size="13" font-weight="700" fill="#4A5190">at their time</text>
+</g>
+
+<!-- selected window -->
+<rect x="520" y="138" width="180" height="336" fill="#FF8A1F" fill-opacity=".26"/>
+<g stroke="#FF6A00" stroke-width="3"><line x1="520" y1="138" x2="520" y2="474"/><line x1="700" y1="138" x2="700" y2="474"/></g>
+<rect x="540" y="146" width="140" height="26" rx="13" fill="#12184A"/>
+<text class="bs-m" x="610" y="164" font-size="14" font-weight="800" fill="#FF8A1F" text-anchor="middle">14:22–14:34</text>
+
+<!-- pulse chart -->
+<path d="M190 232 L230 226 L270 234 L310 228 L350 233 L390 226 L430 232 L470 227 L510 231 L540 222 L560 198 L575 216 L590 190 L610 208 L630 194 L660 218 L690 230 L720 226 L760 232 L800 227 L840 233 L880 228 L920 232 L940 230 V256 H190 Z" fill="url(#bs-area)"/>
+<path d="M190 232 L230 226 L270 234 L310 228 L350 233 L390 226 L430 232 L470 227 L510 231 L540 222 L560 198 L575 216 L590 190 L610 208 L630 194 L660 218 L690 230 L720 226 L760 232 L800 227 L840 233 L880 228 L920 232 L940 230" fill="none" stroke="#00C2B0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M540 222 L560 198 L575 216 L590 190 L610 208 L630 194 L660 218 L690 230" fill="none" stroke="#E0189B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="bs-pulse" pathLength="100" d="M190 232 L230 226 L270 234 L310 228 L350 233 L390 226 L430 232 L470 227 L510 231 L540 222 L560 198 L575 216 L590 190 L610 208 L630 194 L660 218 L690 230 L720 226 L760 232 L800 227 L840 233 L880 228 L920 232 L940 230" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+<circle class="bs-ring" cx="590" cy="190" r="6" fill="none" stroke="#E0189B" stroke-width="3"/>
+<circle cx="590" cy="190" r="6" fill="#E0189B" stroke="#12184A" stroke-width="2.5"/>
+
+<!-- incident lane -->
+<rect x="545" y="270" width="123" height="22" rx="11" fill="#E0189B" stroke="#12184A" stroke-width="3"/>
+<circle cx="545" cy="281" r="9" fill="#fff" stroke="#12184A" stroke-width="3"/>
+<path d="M590 272 l9 9 -9 9 -9 -9 z" fill="#FF8A1F" stroke="#12184A" stroke-width="3"/>
+<circle cx="668" cy="281" r="9" fill="#00C2B0" stroke="#12184A" stroke-width="3"/><path d="M663 281 l4 4 6 -8" fill="none" stroke="#12184A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text class="bs-s" x="714" y="286" font-size="14" font-weight="800" fill="#12184A">start → ack → resolved</text>
+
+<!-- shared axis -->
+<g class="bs-m" font-size="14" font-weight="700" fill="#12184A" text-anchor="middle">
+<text x="190" y="320">14:00</text><text x="340" y="320">14:10</text><text x="490" y="320">14:20</text><text x="640" y="320">14:30</text><text x="790" y="320">14:40</text><text x="958" y="320" text-anchor="end">14:50</text>
+</g>
+
+<!-- log row highlights -->
+<rect class="bs-h2" x="40" y="366" width="920" height="24" fill="#1747FF" fill-opacity=".2"/>
+<rect class="bs-h3" x="40" y="392" width="920" height="24" fill="#1747FF" fill-opacity=".2"/>
+<rect class="bs-h4" x="40" y="418" width="920" height="24" fill="#1747FF" fill-opacity=".2"/>
+
+<!-- log rows -->
+<g stroke="#12184A" stroke-width="2.5">
+<circle cx="325" cy="352" r="6" fill="#00C2B0"/>
+<circle cx="550" cy="378" r="6" fill="#FF8A1F"/>
+<circle cx="580" cy="404" r="6" fill="#E0189B"/>
+<circle cx="655" cy="430" r="6" fill="#E0189B"/>
+<circle cx="790" cy="456" r="6" fill="#00C2B0"/>
+</g>
+<g class="bs-m" font-size="14" font-weight="700" fill="#12184A">
+<text x="339" y="357" opacity=".75">14:09</text><text x="443" y="357" opacity=".75">ok 200</text>
+<text x="564" y="383">14:24</text><text x="674" y="383">p95 latency rising</text>
+<text x="594" y="409">14:26</text><text x="710" y="409">upstream timeout</text>
+<text x="669" y="435">14:31</text><text x="785" y="435">connection refused</text>
+<text x="804" y="461" opacity=".75">14:40</text><text x="906" y="461" opacity=".75">ok</text>
+</g>
+<g class="bs-s" font-size="13" font-weight="800" text-anchor="middle">
+<rect x="389" y="343" width="46" height="18" rx="9" fill="#00C2B0"/><text x="412" y="356" fill="#12184A">INFO</text>
+<rect x="614" y="369" width="52" height="18" rx="9" fill="#FF8A1F"/><text x="640" y="382" fill="#12184A">WARN</text>
+<rect x="644" y="395" width="58" height="18" rx="9" fill="#E0189B"/><text x="673" y="408" fill="#fff">ERROR</text>
+<rect x="719" y="421" width="58" height="18" rx="9" fill="#E0189B"/><text x="748" y="434" fill="#fff">ERROR</text>
+<rect x="852" y="447" width="46" height="18" rx="9" fill="#00C2B0"/><text x="875" y="460" fill="#12184A">INFO</text>
+</g>
+
+<!-- window handles on axis -->
+<g fill="#fff" stroke="#12184A" stroke-width="3"><rect x="513" y="305" width="14" height="22" rx="7"/><rect x="693" y="305" width="14" height="22" rx="7"/></g>
+
+<!-- time cursor -->
+<g class="bs-cur">
+<line x1="520" y1="172" x2="520" y2="474" stroke="#1747FF" stroke-width="3.5"/>
+<path d="M520 172 l-9 -12 h18 z" fill="#1747FF"/>
+<circle cx="520" cy="148" r="0" fill="#1747FF"/>
+<circle cx="520" cy="474" r="0" fill="#1747FF"/>
+</g>
+</svg>
