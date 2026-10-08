@@ -1,0 +1,4 @@
+interface:
+  display_name: "Better Stack Ops"
+  short_description: "Move from monitor state to the logs that explain it."
+  default_prompt: "Use $betterstack-ops to inspect the requested scope and report verified results."
