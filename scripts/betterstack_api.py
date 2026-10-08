@@ -77,7 +77,13 @@ def make_url(area, path, params=None):
 
 def request_json(area, path, *, method="GET", params=None, body=None, timeout=30):
     token, _ = read_token(area=area)
-    return request(make_url(area, path, params), method=method, body=body, timeout=timeout, headers={"Authorization": "Bearer " + token})
+    return request(
+        make_url(area, path, params),
+        method=method,
+        body=body,
+        timeout=timeout,
+        headers={"Authorization": "Bearer " + token},
+    )
 
 
 def summarize_payload(payload: object) -> object:
@@ -126,9 +132,18 @@ def cmd_doctor(_args: argparse.Namespace) -> int:
 
 def cmd_validate(args):
     area = args.area
-    path = {"uptime":"/monitors", "telemetry":"/sources", "errors":"/applications"}[area]
+    path = {"uptime": "/monitors", "telemetry": "/sources", "errors": "/applications"}[
+        area
+    ]
     status, payload = request_json(area, path)
-    print_json({"area":area, "http_status":status, "ok":200 <= status < 300, "summary":summarize_payload(payload)})
+    print_json(
+        {
+            "area": area,
+            "http_status": status,
+            "ok": 200 <= status < 300,
+            "summary": summarize_payload(payload),
+        }
+    )
     return 0 if 200 <= status < 300 else 1
 
 
@@ -144,7 +159,9 @@ def cmd_resource(args: argparse.Namespace) -> int:
 
 
 def cmd_get(args: argparse.Namespace) -> int:
-    status, payload = request_json(args.area, args.path, params=parse_params(args.param))
+    status, payload = request_json(
+        args.area, args.path, params=parse_params(args.param)
+    )
     print_json({"http_status": status, "ok": 200 <= status < 300, "data": payload})
     return 0 if 200 <= status < 300 else 1
 
@@ -171,20 +188,28 @@ def cmd_mutate(args: argparse.Namespace) -> int:
         print_json(preview)
         return 0
 
-    status, payload = request_json(args.area, args.path, method=args.method.upper(), body=body)
+    status, payload = request_json(
+        args.area, args.path, method=args.method.upper(), body=body
+    )
     print_json({"http_status": status, "ok": 200 <= status < 300, "data": payload})
     return 0 if 200 <= status < 300 else 1
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Better Stack API helper for explicit account operations.")
+    parser = argparse.ArgumentParser(
+        description="Better Stack API helper for explicit account operations."
+    )
     sub = parser.add_subparsers(dest="command", required=True)
 
     doctor = sub.add_parser("doctor", help="Show local config without printing token")
     doctor.set_defaults(func=cmd_doctor)
 
-    validate = sub.add_parser("validate", help="Validate one API area (default: uptime)")
-    validate.add_argument("--area", choices=["uptime","telemetry","errors"], default="uptime")
+    validate = sub.add_parser(
+        "validate", help="Validate one API area (default: uptime)"
+    )
+    validate.add_argument(
+        "--area", choices=["uptime", "telemetry", "errors"], default="uptime"
+    )
     validate.set_defaults(func=cmd_validate)
 
     for area in ("uptime", "telemetry", "errors"):
@@ -196,22 +221,30 @@ def build_parser() -> argparse.ArgumentParser:
         else:
             choices = ["applications", "errors"]
         p.add_argument("resource", choices=choices)
-        p.add_argument("--param", action="append", default=[], help="Query parameter key=value")
+        p.add_argument(
+            "--param", action="append", default=[], help="Query parameter key=value"
+        )
         p.add_argument("--summary", action="store_true")
         p.set_defaults(func=cmd_resource, area=area)
 
     get = sub.add_parser("get", help="GET an arbitrary API path")
     get.add_argument("area", choices=sorted(BASE_URLS))
     get.add_argument("path")
-    get.add_argument("--param", action="append", default=[], help="Query parameter key=value")
+    get.add_argument(
+        "--param", action="append", default=[], help="Query parameter key=value"
+    )
     get.set_defaults(func=cmd_get)
 
     for method in ("post", "patch", "put", "delete"):
-        p = sub.add_parser(method, help=f"{method.upper()} an arbitrary API path; dry-run by default")
+        p = sub.add_parser(
+            method, help=f"{method.upper()} an arbitrary API path; dry-run by default"
+        )
         p.add_argument("area", choices=sorted(BASE_URLS))
         p.add_argument("path")
         p.add_argument("--json-file", help="JSON request body file")
-        p.add_argument("--execute", action="store_true", help="Actually send the write request")
+        p.add_argument(
+            "--execute", action="store_true", help="Actually send the write request"
+        )
         p.set_defaults(func=cmd_mutate, method=method)
 
     return parser
@@ -223,7 +256,15 @@ def main(argv: list[str]) -> int:
     try:
         return args.func(args)
     except (SafeError, OSError, ValueError) as exc:
-        print("ERROR: " + (str(exc) if isinstance(exc, SafeError) else "Invalid input or file; sensitive details suppressed"), file=sys.stderr)
+        print(
+            "ERROR: "
+            + (
+                str(exc)
+                if isinstance(exc, SafeError)
+                else "Invalid input or file; sensitive details suppressed"
+            ),
+            file=sys.stderr,
+        )
         return 2
 
 
